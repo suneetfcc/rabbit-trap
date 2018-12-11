@@ -1,0 +1,10 @@
+{
+    "esnext": true,
+    "strict": "global",
+    "globals": {
+        "console": true,
+        "document": true,
+        "window": true,
+        "require": true
+    }
+}
