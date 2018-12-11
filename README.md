@@ -9,7 +9,7 @@ prerequisites:
 
 ### Instructions
 1. Clone repo
-```git clone https://github.com/suneetfcc/rabbit-trap/issues```
+```git clone https://github.com/suneetfcc/rabbit-trap```
 1. Install dependencies
 ```npm install```
 2. Build project

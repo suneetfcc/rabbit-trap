@@ -1,8 +1,8 @@
 'use strict';
 
 var config = {
-	src: 'src',
-	dest: 'dist'
+	src: 'src/scripts',
+	dest: 'dist/scripts'
 };
 
 var es6FileGlob = '/**/*.es6.js';
@@ -64,8 +64,14 @@ gulp.task('buildHtml', () => {
 		.pipe(gulp.dest('dist'));
 });
 
+
+gulp.task('buildAssests', () => {
+	return gulp.src('src/data/**/*')
+		.pipe(gulp.dest('dist/data'));
+});
+
 gulp.task('buildCss', () => {
-	return gulp.src('src/*.css')
+	return gulp.src('src/**/*.css')
 		.pipe(gulp.dest('dist'));
 });
 
@@ -74,7 +80,7 @@ gulp.task('buildJs', (done) => {
 	done();
 });
 
-gulp.task('default', gulp.parallel('buildHtml' , 'buildCss', 'buildJs'));
+gulp.task('default', gulp.parallel('buildHtml' , 'buildCss', 'buildJs', 'buildAssests'));
 
 gulp.task('watch', () => {
     browserSync.init({
@@ -83,10 +89,10 @@ gulp.task('watch', () => {
         }
 	});
 	gulp.watch('src/*.html', gulp.series('buildHtml'));
-	gulp.watch('src/*.css', gulp.series('buildCss'));
-	gulp.watch('src/*.js', gulp.series('buildJs'));
+	gulp.watch('src/**/*.css', gulp.series('buildCss'));
+	gulp.watch('src/**/*.js', gulp.series('buildJs'));
 
 	gulp.watch('dist/*.html').on('change', browserSync.reload);
-	gulp.watch('dist/*.css').on('change', browserSync.reload);
-	gulp.watch('dist/*.js').on('change', browserSync.reload);
+	gulp.watch('dist/**/*.css').on('change', browserSync.reload);
+	gulp.watch('dist/**/*.js').on('change', browserSync.reload);
 });
