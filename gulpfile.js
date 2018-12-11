@@ -23,7 +23,7 @@ function transpileES6Modules(browserifyFileEntries) {
 		var browserifyBundle = browserify({
 			entries: [fileEntry.srcPath]
 		})
-			.transform(babelify, { presets: ['@babel/preset-env'] });
+			.transform(babelify, { presets: ['@babel/preset-env'] , "plugins": ["@babel/plugin-transform-runtime"]});
 
 		var finalStream = browserifyBundle.bundle()
 			.on('log', plugins.util.log.bind(plugins.util, 'Browserify Log'))
