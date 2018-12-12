@@ -17,7 +17,7 @@ export class Display {
         this.context.drawImage(this.buffer.canvas, 0, 0, this.buffer.canvas.width, this.buffer.canvas.height, 0, 0, this.context.canvas.width, this.context.canvas.height);
     }
 
-    resize(width, height, aspect_ratio) {
+    _resize(width, height, aspect_ratio) {
 
         if (width / height > aspect_ratio) {
             width = height * aspect_ratio;
@@ -31,6 +31,10 @@ export class Display {
         this.context.imageSmoothingEnabled = false;
 
         this.render();
+    }
+
+    resize () {
+        this._resize(document.documentElement.clientWidth - 32, document.documentElement.clientHeight - 32, this.buffer.canvas.width / this.buffer.canvas.height);
     }
 
     drawTileMap(map, columns) {
