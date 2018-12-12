@@ -7,7 +7,7 @@ export class AssetManager {
         return new Promise((resolve, reject) => {
             let image         = new Image();
                 image.src     = spritesheet;
-                image.onload  = (image) => resolve(image);
+                image.onload  = () => resolve(image);
                 image.onerror = (error) => reject(error);
         });
     }

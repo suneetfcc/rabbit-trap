@@ -5,7 +5,7 @@ var config = {
 	dest: 'dist/scripts'
 };
 
-var es6FileGlob = '/**/*.es6.js';
+var es6FileGlob = '/**/main.es6.js';
 
 var gulp       = require('gulp');
 var plugins    = require('gulp-load-plugins')();
